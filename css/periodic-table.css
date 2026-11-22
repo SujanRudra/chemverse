@@ -664,3 +664,58 @@
     max-width: 100%;
     font-size: clamp(0.38rem, 0.58vw, 0.58rem);
 }
+
+
+/* CLICKABLE GROUP AND PERIOD LABELS */
+
+.axis-label {
+    appearance: none;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.axis-label:hover {
+    color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.08);
+}
+
+.axis-label.active {
+    color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.15);
+    border-color: var(--accent-cyan);
+    box-shadow: var(--glow-cyan);
+}
+
+
+/* CENTRAL INFORMATION PANEL */
+
+.table-status-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 12px;
+
+    background: rgba(13, 18, 34, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+
+    pointer-events: none;
+}
+
+.table-status-panel h3 {
+    color: var(--accent-cyan);
+    font-size: clamp(0.85rem, 1.3vw, 1.2rem);
+    margin-bottom: 8px;
+}
+
+.table-status-panel p {
+    color: var(--text-secondary);
+    font-size: clamp(0.55rem, 0.8vw, 0.8rem);
+    line-height: 1.5;
+}
