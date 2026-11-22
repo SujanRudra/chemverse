@@ -510,7 +510,7 @@
         "mass": 138.905,
         "category": "lanthanide",
         "period": 6,
-        "group": 3
+        "block": "f"
     },
     {
         "number": 58,
@@ -519,7 +519,7 @@
         "mass": 140.116,
         "category": "lanthanide",
         "period": 6,
-        "group": 4
+        "block": "f"
     },
     {
         "number": 59,
@@ -528,7 +528,7 @@
         "mass": 140.908,
         "category": "lanthanide",
         "period": 6,
-        "group": 5
+        "block": "f"
     },
     {
         "number": 60,
@@ -537,7 +537,7 @@
         "mass": 144.242,
         "category": "lanthanide",
         "period": 6,
-        "group": 6
+        "block": "f"
     },
     {
         "number": 61,
@@ -546,7 +546,7 @@
         "mass": 145,
         "category": "lanthanide",
         "period": 6,
-        "group": 7
+        "block": "f"
     },
     {
         "number": 62,
@@ -555,7 +555,7 @@
         "mass": 150.36,
         "category": "lanthanide",
         "period": 6,
-        "group": 8
+        "block": "f"
     },
     {
         "number": 63,
@@ -564,7 +564,7 @@
         "mass": 151.964,
         "category": "lanthanide",
         "period": 6,
-        "group": 9
+        "block": "f"
     },
     {
         "number": 64,
@@ -573,7 +573,7 @@
         "mass": 157.25,
         "category": "lanthanide",
         "period": 6,
-        "group": 10
+        "block": "f"
     },
     {
         "number": 65,
@@ -582,25 +582,25 @@
         "mass": 158.925,
         "category": "lanthanide",
         "period": 6,
-        "group": 11
+        "block": "f"
     },
     {
         "number": 66,
         "symbol": "Dy",
         "name": "Dysprosium",
-        "mass": 162.500,
+        "mass": 162.5,
         "category": "lanthanide",
         "period": 6,
-        "group": 12
+        "block": "f"
     },
     {
         "number": 67,
         "symbol": "Ho",
         "name": "Holmium",
-        "mass": 164.930,
+        "mass": 164.93,
         "category": "lanthanide",
         "period": 6,
-        "group": 13
+        "block": "f"
     },
     {
         "number": 68,
@@ -609,7 +609,7 @@
         "mass": 167.259,
         "category": "lanthanide",
         "period": 6,
-        "group": 14
+        "block": "f"
     },
     {
         "number": 69,
@@ -618,7 +618,7 @@
         "mass": 168.934,
         "category": "lanthanide",
         "period": 6,
-        "group": 15
+        "block": "f"
     },
     {
         "number": 70,
@@ -627,7 +627,7 @@
         "mass": 173.045,
         "category": "lanthanide",
         "period": 6,
-        "group": 16
+        "block": "f"
     },
     {
         "number": 71,
@@ -636,7 +636,7 @@
         "mass": 174.967,
         "category": "lanthanide",
         "period": 6,
-        "group": 17
+        "block": "f"
     },
     {
         "number": 72,
@@ -798,7 +798,7 @@
         "mass": 227,
         "category": "actinide",
         "period": 7,
-        "group": 3
+        "block": "f"
     },
     {
         "number": 90,
@@ -807,7 +807,7 @@
         "mass": 232.038,
         "category": "actinide",
         "period": 7,
-        "group": 4
+        "block": "f"
     },
     {
         "number": 91,
@@ -816,7 +816,7 @@
         "mass": 231.036,
         "category": "actinide",
         "period": 7,
-        "group": 5
+        "block": "f"
     },
     {
         "number": 92,
@@ -825,7 +825,7 @@
         "mass": 238.029,
         "category": "actinide",
         "period": 7,
-        "group": 6
+        "block": "f"
     },
     {
         "number": 93,
@@ -834,7 +834,7 @@
         "mass": 237,
         "category": "actinide",
         "period": 7,
-        "group": 7
+        "block": "f"
     },
     {
         "number": 94,
@@ -843,7 +843,7 @@
         "mass": 244,
         "category": "actinide",
         "period": 7,
-        "group": 8
+        "block": "f"
     },
     {
         "number": 95,
@@ -852,7 +852,7 @@
         "mass": 243,
         "category": "actinide",
         "period": 7,
-        "group": 9
+        "block": "f"
     },
     {
         "number": 96,
@@ -861,7 +861,7 @@
         "mass": 247,
         "category": "actinide",
         "period": 7,
-        "group": 10
+        "block": "f"
     },
     {
         "number": 97,
@@ -870,7 +870,7 @@
         "mass": 247,
         "category": "actinide",
         "period": 7,
-        "group": 11
+        "block": "f"
     },
     {
         "number": 98,
@@ -879,7 +879,7 @@
         "mass": 251,
         "category": "actinide",
         "period": 7,
-        "group": 12
+        "block": "f"
     },
     {
         "number": 99,
@@ -888,7 +888,7 @@
         "mass": 252,
         "category": "actinide",
         "period": 7,
-        "group": 13
+        "block": "f"
     },
     {
         "number": 100,
@@ -897,7 +897,7 @@
         "mass": 257,
         "category": "actinide",
         "period": 7,
-        "group": 14
+        "block": "f"
     },
     {
         "number": 101,
@@ -906,7 +906,7 @@
         "mass": 258,
         "category": "actinide",
         "period": 7,
-        "group": 15
+        "block": "f"
     },
     {
         "number": 102,
@@ -915,7 +915,7 @@
         "mass": 259,
         "category": "actinide",
         "period": 7,
-        "group": 16
+        "block": "f"
     },
     {
         "number": 103,
@@ -924,7 +924,7 @@
         "mass": 266,
         "category": "actinide",
         "period": 7,
-        "group": 17
+        "block": "f"
     },
     {
         "number": 104,
