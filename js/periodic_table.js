@@ -6,7 +6,6 @@
 export async function initializePeriodicTable() {
 
     const periodicTable = document.getElementById("periodicTable");
-    const visibleCount = document.getElementById("visibleCount");
     const searchInput = document.getElementById("elementSearch");
     const categoryFilters = document.getElementById("categoryFilters");
     const resetButton = document.getElementById("resetFilters");
@@ -16,6 +15,9 @@ export async function initializePeriodicTable() {
     let activeCategory = "all";
     let searchQuery = "";
     let selectedElement = null;
+
+    let selectedGroup = null;
+    let selectedPeriod = null;
 
 
     // Category names for display
@@ -67,73 +69,73 @@ export async function initializePeriodicTable() {
     }
 
 
-    
-// Create an individual element tile
-function createElementTile(element) {
 
-    const tile = document.createElement("button");
+    // Create an individual element tile
+    function createElementTile(element) {
 
-    tile.type = "button";
-    tile.className = "element-tile";
+        const tile = document.createElement("button");
 
-    // Add category styling
-    tile.classList.add(element.category);
+        tile.type = "button";
+        tile.className = "element-tile";
 
-    // Show complete element name on hover
-    tile.title = `${element.name} (${element.symbol})`;
+        // Add category styling
+        tile.classList.add(element.category);
 
-    // Highlight selected element
-    if (selectedElement?.number === element.number) {
-        tile.classList.add("selected");
-    }
+        // Show complete element name on hover
+        tile.title = `${element.name} (${element.symbol})`;
 
-    tile.dataset.number = element.number;
+        // Highlight selected element
+        if (selectedElement?.number === element.number) {
+            tile.classList.add("selected");
+        }
 
-    // Position the element
-    let column;
-    let row;
+        tile.dataset.number = element.number;
 
-    if (element.number >= 57 && element.number <= 71) {
+        // Position the element
+        let column;
+        let row;
 
-        // Lanthanides
-        column = element.number - 53;
-        row = 11;
+        if (element.number >= 57 && element.number <= 71) {
 
-    }
-    else if (element.number >= 89 && element.number <= 103) {
+            // Lanthanides
+            column = element.number - 53;
+            row = 11;
 
-        // Actinides
-        column = element.number - 85;
-        row = 12;
+        }
+        else if (element.number >= 89 && element.number <= 103) {
 
-    }
-    else {
+            // Actinides
+            column = element.number - 85;
+            row = 12;
 
-        column = element.group + 1;
+        }
+        else {
 
-        row = element.period <= 5
-            ? element.period + 1
-            : element.period + 2;
+            column = element.group + 1;
 
-    }
+            row = element.period <= 5
+                ? element.period + 1
+                : element.period + 2;
 
-    tile.style.gridColumn = column;
-    tile.style.gridRow = row;
+        }
 
-    // Element information
-    tile.innerHTML = `
+        tile.style.gridColumn = column;
+        tile.style.gridRow = row;
+
+        // Element information
+        tile.innerHTML = `
         <span class="element-number">${element.number}</span>
         <span class="element-symbol">${element.symbol}</span>
         <span class="element-name">${element.name}</span>
     `;
 
-    tile.setAttribute(
-        "aria-label",
-        `${element.name}, atomic number ${element.number}`
-    );
+        tile.setAttribute(
+            "aria-label",
+            `${element.name}, atomic number ${element.number}`
+        );
 
-    return tile;
-}
+        return tile;
+    }
 
 
 
@@ -251,7 +253,20 @@ function createElementTile(element) {
                 element.symbol.toLowerCase().includes(query) ||
                 String(element.number).includes(query);
 
-            return matchesCategory && matchesSearch;
+            const matchesGroup =
+                selectedGroup === null ||
+                element.group === selectedGroup;
+
+            const matchesPeriod =
+                selectedPeriod === null ||
+                element.period === selectedPeriod;
+
+            return (
+                matchesCategory &&
+                matchesSearch &&
+                matchesGroup &&
+                matchesPeriod
+            );
 
         });
     }
@@ -264,37 +279,113 @@ function createElementTile(element) {
 
         periodicTable.replaceChildren();
 
-        // Group numbers (1–18) across the top
+        // GROUP NUMBERS (1–18)
         for (let group = 1; group <= 18; group++) {
 
-            const label = document.createElement("div");
+            const label = document.createElement("button");
 
+            label.type = "button";
             label.className = "axis-label group-label";
             label.textContent = group;
 
+            label.dataset.group = group;
+
             label.style.gridColumn = group + 1;
             label.style.gridRow = 1;
+
+            label.setAttribute("aria-label", `Select group ${group}`);
+
+            if (selectedGroup === group) {
+                label.classList.add("active");
+            }
 
             periodicTable.appendChild(label);
         }
 
 
-        // Period numbers (1–7) along the left
+        // PERIOD NUMBERS (1–7)
         for (let period = 1; period <= 7; period++) {
 
-            const label = document.createElement("div");
+            const label = document.createElement("button");
 
+            label.type = "button";
             label.className = "axis-label period-label";
             label.textContent = period;
+
+            label.dataset.period = period;
 
             label.style.gridColumn = 1;
             label.style.gridRow = period <= 5
                 ? period + 1
                 : period + 2;
 
+            label.setAttribute("aria-label", `Select period ${period}`);
+
+            if (selectedPeriod === period) {
+                label.classList.add("active");
+            }
+
             periodicTable.appendChild(label);
 
         }
+
+        // CENTRAL INFORMATION PANEL
+        const statusPanel = document.createElement("div");
+
+        statusPanel.className = "table-status-panel";
+
+        // Groups 3–12, periods 1–3
+        statusPanel.style.gridColumn = "4 / 14";
+        statusPanel.style.gridRow = "2 / 5";
+
+        const resultMessage = document.createElement("h3");
+
+        resultMessage.textContent = filteredElements.length === 0
+            ? "No matching elements"
+            : `Showing ${filteredElements.length} of 118 elements`;
+
+        const selectionMessage = document.createElement("p");
+
+        if (selectedGroup !== null && selectedPeriod !== null) {
+
+            selectionMessage.textContent =
+                `Group ${selectedGroup} · Period ${selectedPeriod}`;
+
+        }
+        else if (selectedGroup !== null) {
+
+            selectionMessage.textContent =
+                `Showing Group ${selectedGroup}`;
+
+        }
+        else if (selectedPeriod !== null) {
+
+            selectionMessage.textContent =
+                `Showing Period ${selectedPeriod}`;
+
+        }
+        else if (searchQuery !== "") {
+
+            selectionMessage.textContent =
+                `Search results for "${searchQuery}"`;
+
+        }
+        else if (activeCategory !== "all") {
+
+            selectionMessage.textContent =
+                categoryNames[activeCategory];
+
+        }
+        else {
+
+            selectionMessage.textContent =
+                "Select a group or period number to explore elements.";
+
+        }
+
+        statusPanel.append(resultMessage, selectionMessage);
+
+        periodicTable.appendChild(statusPanel);
 
         // Show placeholders only in the complete table view
         if (activeCategory === "all" && searchQuery === "") {
@@ -331,10 +422,6 @@ function createElementTile(element) {
         }
 
 
-        // Update count
-        visibleCount.textContent = filteredElements.length;
-
-
         // Clear selection if selected element is no longer visible
         if (
             selectedElement &&
@@ -351,9 +438,42 @@ function createElementTile(element) {
     }
 
 
-    // Handle element clicks
+    // Handle element, group and period clicks
     periodicTable.addEventListener("click", event => {
 
+        // GROUP SELECTION
+        const groupLabel = event.target.closest(".group-label");
+
+        if (groupLabel) {
+
+            const group = Number(groupLabel.dataset.group);
+
+            selectedGroup =
+                selectedGroup === group ? null : group;
+
+            renderPeriodicTable();
+
+            return;
+        }
+
+
+        // PERIOD SELECTION
+        const periodLabel = event.target.closest(".period-label");
+
+        if (periodLabel) {
+
+            const period = Number(periodLabel.dataset.period);
+
+            selectedPeriod =
+                selectedPeriod === period ? null : period;
+
+            renderPeriodicTable();
+
+            return;
+        }
+
+
+        // ELEMENT SELECTION
         const tile = event.target.closest(".element-tile");
 
         if (!tile) return;
@@ -365,6 +485,7 @@ function createElementTile(element) {
         );
 
         renderPeriodicTable();
+
         displayElementDetails(selectedElement);
 
     });
@@ -405,6 +526,9 @@ function createElementTile(element) {
 
     // Reset all filters
     resetButton.addEventListener("click", () => {
+
+        selectedGroup = null;
+        selectedPeriod = null;
 
         activeCategory = "all";
         searchQuery = "";
