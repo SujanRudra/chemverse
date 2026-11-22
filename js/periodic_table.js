@@ -237,7 +237,7 @@ export async function initializePeriodicTable() {
     }
 
 
-    // Apply search and category filters
+// Apply search and category filters
     function getFilteredElements() {
 
         return allElements.filter(element => {
@@ -255,7 +255,10 @@ export async function initializePeriodicTable() {
 
             const matchesGroup =
                 selectedGroup === null ||
-                element.group === selectedGroup;
+                (
+                    element.block !== "f" &&
+                    element.group === selectedGroup
+                );
 
             const matchesPeriod =
                 selectedPeriod === null ||
@@ -270,7 +273,6 @@ export async function initializePeriodicTable() {
 
         });
     }
-
 
     // Render the periodic table
     function renderPeriodicTable() {
