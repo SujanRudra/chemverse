@@ -237,7 +237,7 @@ export async function initializePeriodicTable() {
     }
 
 
-// Apply search and category filters
+    // Apply search and category filters
     function getFilteredElements() {
 
         return allElements.filter(element => {
