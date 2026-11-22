@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="CHEMVERSE - Explore the elements, understand atoms, and discover chemistry.">
+
+    <title>CHEMVERSE | Discover Chemistry</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/periodic-table.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- NAVIGATION BAR -->
+        <header id="navbar">
+
+            <nav class="navbar container">
+
+                <a href="#home" class="logo" data-section="home">
+                    <span class="logo-icon">C</span>
+                    <span>CHEM<span class="logo-accent">VERSE</span></span>
+                </a>
+
+                <div class="nav-links" id="navLinks">
+
+                    <a href="#home" class="nav-link active" data-section="home">Home</a>
+
+                    <a href="#periodic-table" class="nav-link" data-section="periodic-table">Periodic Table</a>
+
+                    <a href="#atom-explorer" class="nav-link" data-section="atom-explorer">Atom Explorer</a>
+
+                </div>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </nav>
+
+        </header>
+
+
+        <!-- MAIN CONTENT -->
+        <main>
+
+            <!-- HOME SECTION -->
+            <section id="home" class="page-section active">
+
+                <div class="hero container">
+
+                    <div class="hero-content">
+
+                        <div class="hero-label">
+                            <span class="status-dot"></span>
+                            THE WORLD OF CHEMISTRY
+                        </div>
+
+                        <h1>
+                            Explore the
+                            <span class="gradient-text">Elements.</span>
+                            <br>
+                            Discover the
+                            <span class="gradient-text">Universe.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            Step into an interactive world of chemistry.
+                            Explore all 118 elements, visualize atoms,
+                            and understand the science behind matter.
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <button class="btn btn-primary" data-section="periodic-table">
+                                Explore Periodic Table
+                                <span>→</span>
+                            </button>
+
+                            <button class="btn btn-secondary" data-section="atom-explorer">
+                                Explore Atoms
+                                <span>↗</span>
+                            </button>
+
+                        </div>
+
+                        <div class="hero-stats">
+
+                            <div class="stat">
+                                <h3>118</h3>
+                                <p>Elements</p>
+                            </div>
+
+                            <div class="stat-divider"></div>
+
+                            <div class="stat">
+                                <h3>7</h3>
+                                <p>Periods</p>
+                            </div>
+
+                            <div class="stat-divider"></div>
+
+                            <div class="stat">
+                                <h3>18</h3>
+                                <p>Groups</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CSS ATOM ILLUSTRATION -->
+                    <div class="hero-visual">
+
+                        <div class="atom-glow"></div>
+
+                        <div class="atom">
+
+                            <div class="orbit orbit-one">
+                                <span class="electron"></span>
+                            </div>
+
+                            <div class="orbit orbit-two">
+                                <span class="electron"></span>
+                            </div>
+
+                            <div class="orbit orbit-three">
+                                <span class="electron"></span>
+                            </div>
+
+                            <div class="nucleus">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                        </div>
+
+                        <div class="floating-label label-top">
+                            <span>01</span>
+                            ATOMIC STRUCTURE
+                        </div>
+
+                        <div class="floating-label label-bottom">
+                            <span>118</span>
+                            ELEMENTS
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PERIODIC TABLE SECTION -->
+
+            <section id="periodic-table" class="page-section">
+
+                <div class="container periodic-container">
+
+                    <!-- Section Heading -->
+                    <div class="section-heading">
+                        <span class="section-tag">THE ELEMENTS</span>
+
+                        <h1 class="section-title">
+                            Interactive <span>Periodic Table</span>
+                        </h1>
+
+                        <p class="section-description">
+                            Explore all 118 elements and discover the building
+                            blocks of everything around us.
+                        </p>
+                    </div>
+
+
+                    <!-- Search and Controls -->
+                    <div class="periodic-controls">
+
+                        <div class="search-box">
+                            <span class="search-icon">⌕</span>
+
+                            <input type="text" id="elementSearch"
+                                placeholder="Search by element, symbol or atomic number..." autocomplete="off">
+                        </div>
+
+                        <button id="resetFilters" class="btn btn-secondary">
+                            Reset
+                        </button>
+
+                    </div>
+
+
+                    <!-- Category Filters -->
+                    <details class="category-panel">
+
+                        <summary>
+                            Filter by category
+                            <span>Choose an element category</span>
+                        </summary>
+                        <div class="category-filters" id="categoryFilters">
+
+                            <button class="filter-btn active" data-category="all">
+                                All Elements
+                            </button>
+
+                            <button class="filter-btn" data-category="alkali-metal">
+                                Alkali Metals
+                            </button>
+
+                            <button class="filter-btn" data-category="alkaline-earth-metal">
+                                Alkaline Earth Metals
+                            </button>
+
+                            <button class="filter-btn" data-category="transition-metal">
+                                Transition Metals
+                            </button>
+
+                            <button class="filter-btn" data-category="post-transition-metal">
+                                Post-transition Metals
+                            </button>
+
+                            <button class="filter-btn" data-category="metalloid">
+                                Metalloids
+                            </button>
+
+                            <button class="filter-btn" data-category="nonmetal">
+                                Other Nonmetals
+                            </button>
+
+                            <button class="filter-btn" data-category="halogen">
+                                Halogens
+                            </button>
+
+                            <button class="filter-btn" data-category="noble-gas">
+                                Noble Gases
+                            </button>
+
+                            <button class="filter-btn" data-category="lanthanide">
+                                Lanthanides
+                            </button>
+
+                            <button class="filter-btn" data-category="actinide">
+                                Actinides
+                            </button>
+
+                        </div>
+                    </details>
+
+
+                    <!-- Periodic Table -->
+                    <div class="periodic-table-wrapper">
+
+                        <div class="periodic-table" id="periodicTable">
+
+                            <!-- JavaScript will generate all 118 elements here -->
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Element Count -->
+                    <div class="table-footer">
+
+                        <p>
+                            Showing <span id="visibleCount">0</span> of 118 elements
+                        </p>
+
+                        <p>
+                            Select an element to explore its properties.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Element Information Panel -->
+                    <div id="elementDetails" class="element-details">
+
+                        <div class="details-placeholder">
+                            <span>⚛</span>
+
+                            <h2>Discover an Element</h2>
+
+                            <p>
+                                Select any element from the periodic table
+                                to explore its properties.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ATOM EXPLORER SECTION -->
+            <section id="atom-explorer" class="page-section">
+
+                <div class="container placeholder-section">
+                    <h2 class="section-title">Atom Explorer</h2>
+                    <p class="section-description">
+                        Explore atomic structures and visualizations here.
+                    </p>
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer id="footer">
+            <div class="container footer-content">
+
+                <p>
+                    © 2026 CHEMVERSE. All rights reserved.
+                </p>
+
+                <p class="creator-credit">
+                    A Project Of <span><a href="https://sujanrudra.github.io/portfolio2k26/">SUJAN RUDRA</a></span>
+                </p>
+
+            </div>
+        </footer>
+
+
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/periodic_table.js"></script>
+
+</body>
+
+</html>
